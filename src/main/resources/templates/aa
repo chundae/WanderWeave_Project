@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WanderWeave</title>
+    <link rel="stylesheet" th:href="@{/css/add_activity.css}">
+    <link rel="stylesheet" th:href="@{/css/UI.css}">
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyANBn5U96QTzcgQTCWVaU6APCjqcJ4kSWY&libraries=places"></script>
+
+</head>
+<body>
+<nav class="navbar">
+
+    <div class="navbar-nav">
+        <a href="/profile" class="nav-link">Mypage</a>
+        <a href="/favorites" class="nav-link">Favorites</a>
+        <a href="/shared-trips" class="nav-link">Share</a>
+        <a href="/logout" class="nav-link">Logout</a>
+    </div>
+
+    <div class="container">
+        <a href="/" class="navbar-brand"><p id="animated-text"></p></a>
+    </div>
+
+</nav>
+
+<div class="container">
+    <h1>New Activity</h1>
+    <form action="#" th:action="@{/activities/create}"  th:object="${Activity}"  method="POST">
+        <input type="hidden" name="TripId" th:value="${tripId}">
+        <div class="form-group">
+            <label for="activityName">Activity Name</label>
+            <input type="text" id="activityName" name="activityName" th:field="*{activityName}" class="form-control" required>
+        </div>
+        <div class="form-group">
+            <label for="date">Date</label>
+            <input type="date" id="date" name="date" th:field="*{date}" class="form-control" required>
+        </div>
+        <div class="form-group">
+            <label for="time">Time</label>
+            <input type="time" id="time" name="time" th:field="*{time}" class="form-control" required>
+        </div>
+        <div class="form-group">
+            <label for="pac-input">Location</label>
+            <input type="text" id="pac-input" name="location" class="form-control" placeholder="Enter a location" autocomplete="off">
+            <div id="map" style="height: 300px; width: 100%; margin-top: 10px;"></div>
+            <input type="hidden" id="latitude"  name="latitude" />
+            <input type="hidden" id="longitude"  name="longitude" />
+        </div>
+        <div class="form-group">
+            <label for="description">메모</label>
+            <textarea id="description" name="description" th:field="*{description}" class="form-control"></textarea>
+        </div>
+        <button type="submit" class="btn saveBtn">SAVE</button>
+    </form>
+</div>
+
+<script th:src="@{/js/add_activity.js}"></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyANBn5U96QTzcgQTCWVaU6APCjqcJ4kSWY&callback=initMap" async defer></script>
+</body>
+</html>
+
+
+
+function initMap() {
+    // 기본 지도생성 (기본 주소는 서울)
+    var map = new google.maps.Map(document.getElementById('map'), {
+        center: { lat: 37.5665, lng: 126.9780 },
+        zoom: 12
+    });
+
+    // 입력 필드를 가져와서 자동 완성 활성화
+    var input = document.getElementById('pac-input');
+    var autocomplete = new google.maps.places.Autocomplete(input);
+    autocomplete.bindTo('bounds', map); // 자동 완성을 현재 지도의 영역에 제한합니다.
+
+    // 자동 완성이 변경될 때 이벤트를 처리합니다.
+    input.addEventListener('input', function(){
+        var place = autocomplete.getPlace();
+        if (place.geometry) {
+            //좌표를 선택된 위치로 이동
+            map.setCenter(place.geometry.location);
+            map.setZoom(17);
+        }
+    });
+
+    autocomplete.addListener('place_changed', function(){
+        var place = autocomplete.getPlace();
+        if (!place.geometry) {
+            window.alert("해당지역은 없습니다" + place.name + "");
+            return;
+        }
+
+        if (place.geometry.viewport) {
+            map.fitBounds(place.geometry.viewport);
+        } else {
+            map.setCenter(place.geometry.location);
+            map.setZoom(17);
+        }
+
+        //선택된 위치의 좌표값 저장
+        document.getElementById('latitude').value = place.geometry.location.lat();
+        document.getElementById('longitude').value = place.geometry.location.lng();
+
+        //선택된 지역이름 location 할당
+        input.value = place.name;
+    });
+
+    // 폼 제출 방지
+    document.getElementById('activityForm').addEventListener('submit', function(event) {
+        event.preventDefault(); // 폼 제출 방지
+        // 추가적인 처리 로직을 여기에 추가할 수 있습니다.
+    });
+
+}

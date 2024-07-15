@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WanderWeave</title>
+    <link rel="stylesheet" th:href="@{/css/add_activity.css}">
+    <link rel="stylesheet" th:href="@{/css/UI.css}">
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyANBn5U96QTzcgQTCWVaU6APCjqcJ4kSWY&libraries=places"></script>
+
+</head>
+<body>
+<nav class="navbar">
+
+    <div class="navbar-nav">
+        <a href="/profile" class="nav-link">Mypage</a>
+        <a href="/favorites" class="nav-link">Favorites</a>
+        <a href="/shared-trips" class="nav-link">Share</a>
+        <a href="/logout" class="nav-link">Logout</a>
+    </div>
+
+    <div class="container">
+        <a href="/" class="navbar-brand"><p id="animated-text"></p></a>
+    </div>
+
+</nav>
+
+<div class="container">
+    <h1>New Activity</h1>
+    <form action="#" th:action="@{/activities/create}"  th:object="${Activity}"  method="POST">
+    <input type="hidden" name="TripId" th:value="${tripId}">
+    <div class="form-group">
+        <label for="activityName">Activity Name</label>
+        <input type="text" id="activityName" name="activityName" th:field="*{activityName}" class="form-control" required>
+    </div>
+    <div class="form-group">
+        <label for="date">Date</label>
+        <input type="date" id="date" name="date" th:field="*{date}" class="form-control" required>
+    </div>
+    <div class="form-group">
+        <label for="time">Time</label>
+        <input type="time" id="time" name="time" th:field="*{time}" class="form-control" required>
+    </div>
+    <div class="form-group">
+        <label for="location">Location</label>
+        <input type="text" id="location" name="location" class="form-control" placeholder="Enter a location" autocomplete="off">
+    </div>
+    <div id="map"></div>
+    <input type="hidden" id="latitude" name="latitude" th:field="*{latitude}">
+    <input type="hidden" id="longitude" name="longitude" th:field="*{longitude}">
+    <div class="form-group">
+        <label for="description">메모</label>
+        <textarea id="description" name="description" th:field="*{description}" class="form-control"></textarea>
+    </div>
+    <button type="submit" class="btn saveBtn">SAVE</button>
+</form>
+</div>
+
+<script th:src="@{/js/add_activity.js}"></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyANBn5U96QTzcgQTCWVaU6APCjqcJ4kSWY&callback=initMap" async defer></script>
+</body>
+</html>

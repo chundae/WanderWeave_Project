@@ -1,0 +1,99 @@
+@font-face {
+    font-family: 'NotoSerifKR';
+    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_two@1.0/NotoSerifKR.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'BMJUA';
+    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_one@1.0/BMJUA.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    
+    /* 한글 : 주아체 */
+}
+
+@font-face {
+    font-family: 'Cafe24Supermagic-Bold-v1.0';
+    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2307-2@1.0/Cafe24Supermagic-Bold-v1.0.woff2') format('woff2');
+    font-weight: 700;
+    font-style: normal;
+    /* 영어 : 카페 슈퍼매직*/
+}
+
+@font-face {
+    font-family: 'WavvePADO-Regular';
+    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/2404@1.0/WavvePADO-Regular.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+    /* 파도체 */
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'WavvePADO-Regular';
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    color: #333;
+    line-height: 1.6;
+}
+
+.navbar {
+    background-color: #40495F;
+    color: #fff;
+    padding: 1rem;
+    position: relative;
+}
+
+.navbar .container {
+    text-align: center;
+
+}
+/* 텍스트효과 */
+#animated-text {
+    display: inline-block;
+    font-family: 'Cafe24Supermagic-Bold-v1.0';
+    font-size: 1.5em;
+    border-right: 0.09em solid rgb(0, 0, 0, 0.6); /* 커서 효과 */
+    white-space: nowrap;
+    overflow: hidden;
+    animation: blink-caret 0.75s step-end infinite;
+}
+
+@keyframes blink-caret {
+    from, to { border-color: transparent; }
+    30% { border-color: rgb(0, 0, 0); }
+}
+
+.container .navbar-brand {
+    font-family: 'NotoSerifKR';
+    font-size: 1.7rem;
+    font-weight: bold;
+    color: #333;
+    text-decoration: none;
+    text-align: center;
+}
+
+.navbar .navbar-nav{
+    position: absolute;
+    margin-right : 20px;
+    right: 0;
+}
+.navbar-nav a{
+    margin-right: 10px;
+}
+
+.navbar .nav-link {
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 1rem;
+}
+
+.navbar .nav-link:hover {
+    text-decoration: underline;
+}

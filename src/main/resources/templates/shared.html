@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WanderWeave</title>
+    <link rel="stylesheet" th:href="@{/css/shared.css}">
+    <link rel="stylesheet" th:href="@{/css/UI.css}">
+</head>
+<body>
+<nav class="navbar">
+
+    <div class="navbar-nav">
+        <a href="/profile" class="nav-link">Mypage</a>
+        <a href="/favorites" class="nav-link">Favorites</a>
+        <a href="/shared-trips" class="nav-link">Share</a>
+        <a href="/logout" class="nav-link">Logout</a>
+    </div>
+
+    <div class="container">
+        <a href="/" class="navbar-brand"><p id="animated-text"></p></a>
+    </div>
+
+</nav>
+
+
+<div class="search">
+    <input type="text" name="" id="" class="searchbox" placeholder="검색">
+</div>
+
+<div class="shareList">
+    <ul class="activity-list">
+        <li>
+            <div class="info">
+                <h3>제주도 여행</h3>
+                <h3>작성자 : user1</h3>
+                <p>여행 시작일 : 2024-05-22</p>
+                <p>여행 종료일 : 2024-05-30</p>
+                <p>설명: 나홀로 제주도 여행기</p>
+                <button class="btn viewBtn">View Details</button>
+            </div>
+            <div class="map"></div>
+        </li>
+        <li>
+            <div class="info">
+                <h3>유럽 여행</h3>
+                <h3>작성자 : user1</h3>
+                <p>여행 시작일 : 2024-04-22</p>
+                <p>여행 종료일 : 2024-04-30</p>
+                <p>설명: 나홀로 유럽 여행기</p>
+                <button class="btn viewBtn">View Details</button>
+            </div>
+            <div class="map"></div>
+        </li>
+        <li>
+            <div class="info">
+                <h3>태국 여행</h3>
+                <h3>작성자 : user3</h3>
+                <p>여행 시작일 : 2024-04-22</p>
+                <p>여행 종료일 : 2024-04-30</p>
+                <p>설명: 태국</p>
+                <button class="btn viewBtn">View Details</button>
+            </div>
+            <div class="map"></div>
+        </li>
+    </ul>
+</div>
+
+<script th:src="@{/js/shared.js}"></script>
+</body>

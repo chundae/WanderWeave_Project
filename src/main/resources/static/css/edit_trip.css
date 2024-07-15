@@ -1,0 +1,64 @@
+.container {
+    max-width: 800px;
+    margin: 2rem auto;
+    padding: 1rem;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+}
+
+h1 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+label {
+    display: block;
+    font-weight: bold;
+}
+
+input[type="text"],
+input[type="date"],
+textarea {
+    width: 100%;
+    padding: 0.5rem;
+    font-size: 1rem;
+    border: 1.5px solid #40495F;
+    border-radius: 4px;
+}
+label{
+    font-family: Arial, Helvetica, sans-serif;
+}
+.btn {
+    display: inline-block;
+    padding: 0.5rem 1rem;
+    margin: 0.5rem 0;
+    margin-bottom: 1rem;
+    border: none;
+    border-radius: 4px;
+    text-align: center;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.save {
+    background-color: #40495F;
+    color: #fff;
+}
+
+.save:hover {
+    background-color: #5a6268;
+}
+.delete {
+    background-color: #e24c4c;
+    color: #fff;
+}
+
+.delete:hover {
+    background-color: #5a6268;
+}
+

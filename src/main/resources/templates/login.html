@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WanderWeave</title>
+    <link rel="stylesheet" th:href="@{/css/login.css}">
+</head>
+<body>
+
+<div class="container">
+    <p>WanderWeave</p>
+    <form action="/login" method="post">
+        <div class="inputGroup">
+
+            <input type="email" name="userEmail" id="userEmail" class="login" placeholder="Email"><br>
+            <input type="password" name="password" id="password" class="login" placeholder="password">
+            <div class="nav">
+                <a href="#">ID찾기</a>
+                <a href="#">PW찾기</a>
+                <a href="/join">회원가입</a>
+            </div>
+        </div>
+        <button type="submit" class="login_btn" value="user">Login</button>
+    </form>
+</div>
+
+</body>
+</html>

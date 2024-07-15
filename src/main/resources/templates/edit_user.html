@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WanderWeave</title>
+    <link rel="stylesheet" th:href="@{/css/edit_user.css}">
+</head>
+<body>
+
+<div class="container">
+    <p>WanderWeave</p>
+    <form action="/editUser"  method="post">
+        <div class="inputGroup">
+            <input type="hidden" name="userId" th:value="${user.userId}">
+            <input type="text" name="userName" id="userName" th:value="${user.userName}" class="join" placeholder="Name">
+            <input type="email" name="userEmail" id="userEmail" th:value="${user.userEmail}" class="login" placeholder="email">
+            <input type="password" name="password" id="password" th:value="${user.password}" class="join" placeholder="password">
+            <input type="text" name="birthday" id="birthday" th:value="${user.birthday}" class="join" placeholder="생년월일">
+            <input type="text"  name="userPhone" id="userPhone" th:value="${user.userPhone}" class="join" placeholder="phone">
+        </div>
+        <button type="submit" class="join_btn" value="join">Edit</button>
+    </form>
+</div>
+
+</body>
+</html>

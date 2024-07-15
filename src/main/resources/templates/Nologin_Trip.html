@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WanderWeave</title>
+    <link rel="stylesheet" th:href="@{/css/trip.css}">
+    <link rel="stylesheet" th:href="@{/css/UI.css}">
+
+<!--    <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=eb6f945319d72d95a02b68ec9f6176d5"></script>-->
+<!--    <script>-->
+<!--        var container = document.getElementById('map');-->
+<!--        var options = {-->
+<!--            center: new kakao.maps.LatLng(33.450701, 126.570667),-->
+<!--            level: 3-->
+<!--        };-->
+
+<!--        var map = new kakao.maps.Map(container, options);-->
+<!--    </script>-->
+
+</head>
+<body>
+
+
+
+<nav class="navbar">
+
+    <div class="navbar-nav">
+        <a href="/login" class="nav-link">LOGIN</a>
+    </div>
+
+    <div class="container">
+        <a href="/dashboard" class="navbar-brand"><p id="animated-text"></p></a>
+    </div>
+
+</nav>
+
+<div class="container">
+    <h1>Welcome</h1>
+    <button type="button" class="btn createTrip" >Add New Trip</button>
+
+    <div class="trip-list">
+
+        <div class="trip-card">
+            <div class="info">
+                <h3>제주도 여행</h3>
+                <p>여행 시작일 : 2024-05-22</p>
+                <p>여행 종료일 : 2024-05-30</p>
+                <p>메모: 나홀로 제주도 여행기</p>
+                <button class="btn viewBtn">View Details</button>
+            </div>
+            <div class="map" id="map"></div>
+        </div>
+
+        <div class="trip-card">
+            <div class="info">
+                <h3>유럽 여행</h3>
+                <p>여행 시작일 : 2024-04-22</p>
+                <p>여행 종료일 : 2024-04-30</p>
+                <p>메모: 나홀로 유럽 여행기</p>
+                <button class="btn viewBtn">View Details</button>
+            </div>
+            <div class="map"></div>
+        </div>
+
+
+
+    </div>
+</div>
+
+<script th:src="@{/js/TripMain.js}"></script>
+</body>
+</html>

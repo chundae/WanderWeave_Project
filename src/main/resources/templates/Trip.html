@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WanderWeave</title>
+    <link rel="stylesheet" th:href="@{/css/trip.css}">
+    <link rel="stylesheet" th:href="@{/css/UI.css}">
+
+<!--    <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=eb6f945319d72d95a02b68ec9f6176d5"></script>-->
+<!--    <script>-->
+<!--        var container = document.getElementById('map');-->
+<!--        var options = {-->
+<!--            center: new kakao.maps.LatLng(33.450701, 126.570667),-->
+<!--            level: 3-->
+<!--        };-->
+
+<!--        var map = new kakao.maps.Map(container, options);-->
+<!--    </script>-->
+
+</head>
+<body>
+
+
+<nav class="navbar">
+
+    <div class="navbar-nav">
+        <a href="/mypage" class="nav-link">Mypage</a>
+        <a href="/favorites" class="nav-link">Favorites</a>
+        <a href="/shared" class="nav-link">Share</a>
+        <a href="/logout" class="nav-link">Logout</a>
+    </div>
+
+    <div class="container">
+        <a href="/" class="navbar-brand"><p id="animated-text"></p></a>
+    </div>
+
+</nav>
+
+<div class="container">
+    <h1>Welcome, <p th:text="${user.userName}"/></h1>
+    <button type="button" class="btn createTrip" onclick="addTrip()">Add New Trip</button>
+
+    <div class="trip-list">
+
+        <div class="trip-card" th:each="trip : ${viewList}">
+            <div class="info">
+                <h3 th:text="${trip.tripName}"></h3>
+                <label>여행 시작일 : <p th:text="${trip.start_date}"></p></label><br>
+                <label>여행 종료일 : <p th:text="${trip.end_date}"/></label><br>
+                <label>설명 : <p th:text="${trip.description}"/></label><br>
+                <button class="btn viewBtn" th:onclick="'viewtrip(' + ${trip.tripId} + ')'" >View Details</button>
+            </div>
+
+            <div class="map" id="map"></div>
+        </div>
+
+    </div>
+</div>
+
+<script th:src="@{/js/TripMain.js}"></script>
+</body>
+</html>

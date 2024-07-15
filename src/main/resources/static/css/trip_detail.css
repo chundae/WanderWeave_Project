@@ -1,0 +1,144 @@
+@font-face {
+    font-family: 'NotoSerifKR';
+    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_two@1.0/NotoSerifKR.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'BMJUA';
+    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_one@1.0/BMJUA.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    
+    /* 한글 : 주아체 */
+}
+
+@font-face {
+    font-family: 'Cafe24Supermagic-Bold-v1.0';
+    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2307-2@1.0/Cafe24Supermagic-Bold-v1.0.woff2') format('woff2');
+    font-weight: 700;
+    font-style: normal;
+    /* 영어 : 카페 슈퍼매직*/
+}
+
+@font-face {
+    font-family: 'WavvePADO-Regular';
+    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/2404@1.0/WavvePADO-Regular.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+    /* 파도체 */
+}
+
+.container {
+    max-width: 1200px;
+    margin: 2rem auto;
+    padding: 1rem;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+}
+.container p{
+    display : inline-block;
+}
+
+h1, h2, h3 {
+    margin-bottom: 1rem;
+    font-family: 'WavvePADO-Regular';
+}
+
+h2 {
+    margin-top: 20px;
+}
+
+.activity-list {
+    display: flex;
+    flex-wrap: wrap;
+    list-style: none;
+    padding: 0;
+    gap: 1rem;
+}
+
+.activity-list li {
+    display: flex;
+    justify-content: space-between;
+    width: calc(50% - 0.5rem); /* 50% 너비에서 간격의 절반을 뺀 값 */
+    margin-bottom: 2rem;
+    padding: 1rem;
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    box-sizing: border-box; /* 패딩이 너비 계산에 포함되도록 설정 */
+}
+
+.activity-list li .info {
+    flex: 1;
+    margin-right: 1rem;
+}
+
+.activity-list li .map {
+    width: 250px; 
+    height: 180px;
+
+}
+
+.activity-list li h3 {
+    margin-bottom: 0.5rem;
+    font-family: 'WavvePADO-Regular';
+}
+
+.activity-list li p {
+    display: inline-block;
+    margin-bottom: 0.5rem;
+    font-family: 'WavvePADO-Regular';
+}
+
+.activity-list li strong {
+
+    margin-bottom: 0.5rem;
+    font-family: 'WavvePADO-Regular';
+}
+.btn {
+    display: inline-block;
+    padding: 0.5rem 1rem;
+    margin: 0.5rem 0;
+    margin-bottom: 1rem;
+    border: none;
+    border-radius: 4px;
+    text-align: center;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+.addActivity {
+    background-color: #40495F;
+    color: #fff;
+}
+
+.addActivity:hover {
+    background-color: #5a6268;
+}
+
+.viewBtn {
+    background-color: #40495F;
+    color: #fff;
+}
+
+.viewBtn:hover {
+    background-color: #5a6268;
+}
+
+.EditBtn {
+    background-color: #40495F;
+    color: #fff;
+}
+
+.EditBtn:hover {
+    background-color: #5a6268;
+}
+.delete {
+    background-color: #e24c4c;
+    color: #fff;
+}
+
+.delete:hover {
+    background-color: #5a6268;
+}

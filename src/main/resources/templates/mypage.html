@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WanderWeave</title>
+    <link rel="stylesheet" th:href="@{/css/mypage.css}">
+    <link rel="stylesheet" th:href="@{/css/UI.css}">
+</head>
+<body>
+<nav class="navbar">
+
+    <div class="navbar-nav">
+        <a href="/mypage" class="nav-link">Mypage</a>
+        <a href="/favorites" class="nav-link">Favorites</a>
+        <a href="/shared-trips" class="nav-link">Share</a>
+        <a href="/logout" class="nav-link">Logout</a>
+    </div>
+
+    <div class="container">
+        <a href="/" class="navbar-brand"><p id="animated-text"></p></a>
+    </div>
+
+</nav>
+
+<div class="container">
+    <h1>Mypage</h1>
+    <div class="profile">
+        <img src="images/user2.jpg" alt="Profile Picture" class="profile-picture">
+        <div class="profile-info">
+            <strong>이름 : <p th:text="${user.userName}"/></strong><br>
+            <strong>이메일 : </strong><p th:text="${user.userEmail}"/><br>
+            <strong>생일 : </strong><p th:text="${user.birthday}"/><br>
+            <strong>자기소개 : </strong><p> 간단한 자기 소개를 여기에 입력하세요.</p><br>
+            <button class="btn EditBtn" th:onclick="'EditUser(' + ${user.userId} + ')'" >정보수정</button>
+        </div>
+    </div>
+
+    <h2>My Trips</h2>
+    <ul class="trip-list">
+        <li class="trip-card">
+            <div class="trip-info" th:each="trip : ${viewList}">
+                <h3 th:text="${trip.tripName}"></h3>
+                <strong>Start Date:</strong><p th:text="${trip.start_date}"/><br>
+                <strong>End Date:</strong><p th:text="${trip.end_date}"/><br>
+                <strong>Description:</strong><p th:text="${trip.description}"/><br>
+                <button class="btn viewBtn" th:onclick="'viewtrip(' + ${trip.tripId} + ')'" >View Details</button>
+            </div>
+            <div class="map"></div>
+        </li>
+        <!-- 다른 여행 카드들 -->
+    </ul>
+
+</div>
+
+<script th:src="@{/js/mypage.js}"></script>
+</body>
+</html>

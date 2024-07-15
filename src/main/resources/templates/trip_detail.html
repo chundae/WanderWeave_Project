@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WanderWeave</title>
+
+    <link rel="stylesheet" th:href="@{/css/trip_detail.css}">
+    <link rel="stylesheet" th:href="@{/css/UI.css}">
+</head>
+<body>
+<nav class="navbar">
+
+    <div class="navbar-nav">
+        <a href="/profile" class="nav-link">Mypage</a>
+        <a href="/favorites" class="nav-link">Favorites</a>
+        <a href="/shared-trips" class="nav-link">Share</a>
+        <a href="/logout" class="nav-link">Logout</a>
+    </div>
+
+    <div class="container">
+        <a href="/" class="navbar-brand"><p id="animated-text"></p></a>
+    </div>
+
+</nav>
+
+<div class="container">
+    <h1 th:text="${Trip.tripName}"></h1>
+    <strong>여행 시작일 : </strong><p th:text="${Trip.start_date}"/><br>
+    <strong>여행 종료일  : </strong><p th:text="${Trip.end_date}"/><br>
+    <strong>설명 : </strong><p th:text="${Trip.description}"/><br>
+    <button type="button" class="btn addActivity" th:onclick="'addActivity(' + ${Trip.tripId} + ')'" >Add Activity</button>
+    <button type="button" class="btn EditBtn" th:onclick="'editTrip(' + ${Trip.tripId} + ')'" >Edit Trip</button>
+    <button type="button" class="btn delete" th:onclick="'delTrip(' + ${Trip.tripId} + ')'" >Delete</button>
+
+    <h2>계획</h2>
+    <ul class="activity-list">
+        <li th:each="activity : ${activityList}">
+            <div class="info">
+                <h3 th:text="${activity.activityName}"/>
+                <strong>날짜 : </strong><p th:text="${activity.date}"/><br>
+                <strong>시간 : </strong><p th:text="${activity.time}"/><br>
+                <strong>지역 : </strong><p th:text="${activity.location}"/><br>
+                <strong>메모 : </strong> <p th:text="${activity.description}"/><br>
+                <!-- 지도 좌표 -->
+                <input type="hidden" th:value="${activity.latitude}" id="latitude">
+                <input type="hidden" th:value="${activity.longitude}" id="longitude">
+                <button class="btn viewBtn" th:onclick="'viewActivity(' + ${activity.activityId} + ')'" >View Activity</button>
+                <button class="btn LikeBtn" th:onclick="'LikeActivity(' + ${activity.activityId} + ')'" >즐겨찾기</button>
+            </div>
+            <div class="map" th:id="'map-' + ${activity.activityId}"></div>
+        </li>
+    </ul>
+
+</div>
+
+<script th:src="@{/js/trip_detai.js}"></script>
+<!--구글 맵스 -->
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyANBn5U96QTzcgQTCWVaU6APCjqcJ4kSWY&callback=initMap" async defer></script>
+</body>
+</html>

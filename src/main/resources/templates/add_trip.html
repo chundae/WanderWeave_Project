@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WanderWeave</title>
+    <link rel="stylesheet" th:href="@{/css/add_trip.css}">
+    <link rel="stylesheet" th:href="@{/css/UI.css}">
+</head>
+<body>
+<nav class="navbar">
+
+    <div class="navbar-nav">
+        <a href="/profile" class="nav-link">Mypage</a>
+        <a href="/favorites" class="nav-link">Favorites</a>
+        <a href="/shared-trips" class="nav-link">Share</a>
+        <a href="/logout" class="nav-link">Logout</a>
+    </div>
+
+    <div class="container">
+        <a href="/" class="navbar-brand"><p id="animated-text"></p></a>
+    </div>
+
+</nav>
+
+<div class="container">
+    <h1>Add New Trip</h1>
+    <form action="/trips/create" method="POST">
+        <div class="form-group">
+            <input type="hidden" id="userId" name="userId" th:value="${user.userId}">
+            <label for="TripName">Trip Name</label>
+            <input type="text" id="TripName" name="TripName" class="form-control" required>
+        </div>
+        <div class="form-group">
+            <label for="Start_date">여행 시작일</label>
+            <input type="date" id="Start_date" name="Start_date" class="form-control" required>
+        </div>
+        <div class="form-group">
+            <label for="End_date">여행 종료일</label>
+            <input type="date" id="End_date" name="End_date" class="form-control" required>
+        </div>
+        <div class="form-group">
+            <label for="description">설명</label>
+            <textarea id="description" name="description" class="form-control"></textarea>
+        </div>
+        <button type="submit" class="btn save">SAVE</button>
+    </form>
+</div>
+
+<script th:src="@{js/add_trip.js}"></script>
+</body>
+</html>

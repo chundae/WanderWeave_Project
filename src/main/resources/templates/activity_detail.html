@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WanderWeave</title>
+    <link rel="stylesheet" th:href="@{/css/activity_detail.css}">
+    <link rel="stylesheet" th:href="@{/css/UI.css}">
+</head>
+<body>
+<nav class="navbar">
+
+    <div class="navbar-nav">
+        <a href="/profile" class="nav-link">Mypage</a>
+        <a href="/favorites" class="nav-link">Favorites</a>
+        <a href="/shared-trips" class="nav-link">Share</a>
+        <a href="/logout" class="nav-link">Logout</a>
+    </div>
+
+    <div class="container">
+        <a th:href="@{/Trip}" class="navbar-brand"><p id="animated-text"></p></a>
+    </div>
+
+</nav>
+
+<div class="container">
+    <h1 th:text="${activity.activityName}"></h1>
+    <div class="activity-details">
+        <div class="info">
+            <strong>날짜 : </strong><p th:text="${activity.date}"/><br>
+            <strong>시간 : </strong><p th:text="${activity.time}"/><br>
+            <strong>지역 : </strong><p th:text="${activity.location}"/><br>
+            <strong>메모 : </strong> <p th:text="${activity.description}"/><br>
+            <button type="button" class="btn EditBtn" th:onclick="'editactivity(' + ${activity.activityId} + ')'" >Edit</button>
+            <button type="button" class="btn delBtn" th:onclick="'delactivity(' + ${activity.activityId} + ')'" >Delete</button>
+        </div>
+        <div class="map"></div>
+    </div>
+</div>
+
+
+<script th:src="@{/js/activity_detail.js}"></script>
+</body>
+</html>
